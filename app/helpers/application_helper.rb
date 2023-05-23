@@ -14,6 +14,7 @@ module ApplicationHelper
 
 
     date.between?(bisstart, bisend)
+    # or .cover?
 
     date.saturday?
     date.sunday?
