@@ -16,6 +16,7 @@ class MeetingsController < ApplicationController
     @meetings = policy_scope(@user.meetings.where(
       start_date: (Time.now.beginning_of_month - 1.month).beginning_of_week..(Time.now.end_of_month + 1.month).end_of_week
     ))
+
   end
 
   def analytics
@@ -149,6 +150,7 @@ class MeetingsController < ApplicationController
     @users_names = params[:users]
     authorize @meeting
     if @meeting.save
+      @meeting.sync_to_google_calendar(@users_names)
       @users_names.each do |name|
         @user_instance = User.where(name: name).first
         @booking = Booking.create(user: @user_instance, meeting: @meeting)
@@ -197,11 +199,23 @@ class MeetingsController < ApplicationController
     redirect_to meetings_path
   end
 
-  def redirect
-  client = Signet::OAuth2::Client.new(client_options)
+  # def sync_to_google_calendar
+  #   service = Google::Apis::CalendarV3::CalendarService.new
+  #   service.authorization = Google::Apis::RequestOptions.default.authorization
 
-    redirect_to client.authorization_uri.to_s, allow_other_host: true
-  end
+  #   meeting = Google::Apis::CalendarV3::Meeting.new(
+  #     summary: title,
+  #     description: description,
+  #     start: {
+  #       date_time: start_date.rfc3339
+  #     },
+  #     end: {
+  #       date_time: end_date.rfc3339
+  #     }
+  #   )
+
+  #   service.insert_event('primary', meeting)
+  # end
 
   private
 
@@ -284,16 +298,4 @@ class MeetingsController < ApplicationController
     )
     @result.html_safe
   end
-
-  def client_options
-    {
-      client_id: Rails.application.secrets.google_client_id,
-      client_secret: Rails.application.secrets.google_client_secret,
-      authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
-      token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
-      scope: Google::Apis::CalendarV3::AUTH_CALENDAR,
-      redirect_uri: callback_url
-    }
-  end
-
 end

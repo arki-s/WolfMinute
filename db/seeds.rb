@@ -87,6 +87,24 @@ objective4 = "<h3>Objectives:</h3>
 
 objectives = [objective1, objective2, objective3, objective4]
 
+juan = User.create!(
+  name: "Juan Bernal",
+  email: "juan-bernal@wolfminute.com",
+  role: role.sample,
+  password: "123456",
+  job_title: Faker::Job.title,
+  mobile: Faker::PhoneNumber.cell_phone
+)
+
+jun = User.create!(
+  name: "Jun Ukemori",
+  email: "jun-ukemori@wolfminute.com",
+  role: role.sample,
+  password: "123456",
+  job_title: Faker::Job.title,
+  mobile: Faker::PhoneNumber.cell_phone
+)
+
 test_user = User.create!(
   name: "testuser",
   email: "test@email.com",

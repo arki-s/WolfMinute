@@ -14,6 +14,4 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:destroy]
   get "users/:id/card", to: "users#card", as: "user_card"
-  get '/redirect', to: 'meetings#redirect', as: 'redirect'
-  get '/callback', to: 'meetings#callback', as: 'callback'
 end
