@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: “Star Wars” }, { name: “Lord of the Rings” }])
-#   Character.create(name: “Luke”, movie: movies.first)
 require 'date'
 puts "cleaning users, meetings and bookings..."
 Booking.destroy_all
@@ -368,7 +361,7 @@ end
   Booking.create!(
     user: mei,
     meeting: test_meeting,
-    status: "accepted" # or just 'accepted'
+    status: "accepted"
   )
 end
 
@@ -390,7 +383,7 @@ end
   Booking.create!(
     user: mei,
     meeting: test_meeting,
-    status: "accepted" # or just 'accepted'
+    status: "accepted"
   )
 end
 
@@ -412,7 +405,7 @@ end
   Booking.create!(
     user: mei,
     meeting: test_meeting,
-    status: "accepted" # or just 'accepted'
+    status: "accepted"
   )
 end
 
@@ -438,11 +431,9 @@ end
   Booking.create!(
     user: mei,
     meeting: test_meeting,
-    status: "accepted" # or just 'accepted'
+    status: "accepted"
   )
 end
-
-
 
 dday = DateTime.new(now.year, 6, 5, 9, 0, 0)
 ddday = DateTime.new(now.year, 6, 5, 9, 45, 0)
@@ -460,7 +451,7 @@ ttest = Meeting.create!(
 Booking.create!(
   user: test_user,
   meeting: ttest,
-  status: "accepted" # or just 'accepted'
+  status: "accepted"
 )
 
 puts "created #{Meeting.count}meetings"
@@ -469,7 +460,6 @@ puts "created #{Meeting.count}meetings"
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Name.first_name + "-" + Faker::Name.last_name + "@wolfminute.com",
-    # email: Faker::Internet.email,
     role: role.sample,
     job_title: Faker::Job.title,
     mobile: Faker::PhoneNumber.cell_phone,
@@ -507,7 +497,7 @@ if day < DateTime.now
   Booking.create!(
     user: user,
     meeting: meeting,
-    status: "accepted" # or just 'accepted'
+    status: "accepted"
   )
 
 else
@@ -525,7 +515,7 @@ else
   Booking.create!(
     user: user,
     meeting: meeting,
-    status: "accepted" # or just 'accepted'
+    status: "accepted"
   )
 end
 end
@@ -549,7 +539,7 @@ end
   Booking.create!(
     user: user,
     meeting: meeting_april,
-    status: "accepted" # or just 'accepted'
+    status: "accepted"
   )
 end
 
@@ -572,7 +562,7 @@ end
   Booking.create!(
     user: user,
     meeting: meeting_march,
-    status: "accepted" # or just 'accepted'
+    status: "accepted"
   )
 end
 
@@ -595,7 +585,7 @@ end
   Booking.create!(
     user: user,
     meeting: meeting_may,
-    status: "accepted" # or just 'accepted'
+    status: "accepted"
   )
 end
 
@@ -603,7 +593,6 @@ end
 end
 
 Meeting.find_each do |meeting|
-  # create a booking for each user
   User.find_each do |user|
     if user.id != meeting.user_id && rand(0..4) == 0
       Booking.create!(
