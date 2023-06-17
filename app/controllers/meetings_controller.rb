@@ -154,13 +154,7 @@ class MeetingsController < ApplicationController
     # chart for all
     @chart_data = {
       labels: %w[January February March April May June],
-      datasets: [
-        # {
-        # label: 'top created',
-        # backgroundColor: 'transparent',
-        # borderColor: '#39B54A',
-        # data: [top(Date.parse("110"))[1] + 7, top(Date.parse("110"))[1] + 4, top(Date.parse("110"))[1], top(Date.parse("140"))[1], top(Date.parse("140"))[1], top(Date.parse("160"))[1]]},
-        {
+      datasets: [{
         label: 'Total number of MTG',
         backgroundColor: 'transparent',
         borderColor: '#3B82F6',
@@ -185,19 +179,7 @@ class MeetingsController < ApplicationController
     # chart for users
     @chart_data_second = {
       labels: %w[Jan Feb Ma Apr May Jun],
-      datasets: [
-        # {
-      #   label: 'Total duration',
-      #   backgroundColor: 'transparent',
-      #   borderColor: '#39B54A',
-      #   data: [user_total(Date.parse("110")) - 123, user_total(Date.parse("110")) - 79, user_total(Date.parse("110")) - 23, user_total(Date.parse("110")), user_total(Date.parse("140")), user_total(Date.parse("160"))]
-      # }, {
-      #   label: 'Total number of MTG',
-      #   backgroundColor: 'transparent',
-      #   borderColor: '#3B82F6',
-      #   data: [user_count(Date.parse("110")) - 123, user_count(Date.parse("110")) - 79, user_count(Date.parse("110")) - 23, user_count(Date.parse("110")), user_count(Date.parse("140")), user_count(Date.parse("160"))]
-      # },
-      {
+      datasets: [{
         label: 'Total cost ¥',
         backgroundColor: 'transparent',
         borderColor: '#E24328',
@@ -281,7 +263,6 @@ class MeetingsController < ApplicationController
     authorize @meeting
     Booking.create(user: current_user, meeting: @meeting)
     if @meeting.save
-      # @meeting.sync_to_google_calendar(@users_names)
       @users_names.each do |name|
         @user_instance = User.where(name: name).first
         @booking = Booking.create(user: @user_instance, meeting: @meeting)
