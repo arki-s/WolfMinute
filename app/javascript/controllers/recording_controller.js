@@ -81,7 +81,6 @@ export default class extends Controller {
         this.stopTime = Date.now();
         console.log("Stop time", this.stopTime);
         this.totalMilliseconds = this.stopTime - this.startTime;
-        // this.millisecondsTarget.value = this.totalMilliseconds;
 
         console.log("Total milliseconds: ", this.totalMilliseconds);
       }, 500);
@@ -89,9 +88,6 @@ export default class extends Controller {
       this.earTarget.classList.add("d-none")
       this.start_playbackTarget.classList.remove("d-none")
       this.stop_recordingTarget.classList.add("d-none")
-      // // this.uploadTarget.classList.remove("d-none")
-      // this.reset_playbackTarget.classList.remove("d-none")
-      // this.clipTarget.classList.remove("d-none")
       this.isRecording = false;
     }
     console.log(`Recording: ${this.isRecording}`)
@@ -107,16 +103,7 @@ export default class extends Controller {
     console.log("Upload this clip ", clipUpload);
     formData.append('video[audio]', clipUpload, `${fileName}.webm`)
     console.log(formData.get("video[audio]"));
-    // formData.append('length', this.totalMilliseconds)
-    // console.log(formData.get("length"));
     console.log(formData);
-
-    // Rails.ajax({
-    //   url: form.action,
-    //   type: "patch",
-    //   dataType: "script",
-    //   data: formData
-    // })
     $("#loader").show();
 
     fetch(form.action, {

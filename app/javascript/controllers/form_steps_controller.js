@@ -1,8 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="form-steps"
 export default class extends Controller {
-  static targets = ["step", "spinner","description", "startTime", "location", "duration", "gptResult", "checkbox", "endTime", "gptTimeResult"];
+  static targets = ["step", "spinner", "description", "startTime", "location", "duration", "gptResult", "checkbox", "endTime", "gptTimeResult"];
 
   connect() {
     this.currentStep = 0;
@@ -20,24 +19,11 @@ export default class extends Controller {
         this.users_names.push(checkbox.value)
 
         console.log(this.users_names)
-        // this.fetchNextAvailableTime(this.users_names)
       }
     });
     this.currentStep++;
     this.showCurrentStep();
   }
-
-  // fetchNextAvailableTime(users_names) {
-  //   const url = `/meetings/new?usersnames=${users_names}`
-  //   fetch(url, { headers: { "Accept": "text/plain", method: "get" } })
-  //     .then((response) => response.text())
-  //     .then((data) => {
-  //       console.log(data)
-  //       this.availabletimeTarget.innerHTML = data;
-  //     })
-  //     .catch((error) => {
-  //       console.error(error)});
-  // }
 
   showCurrentStep() {
     this.stepTargets.forEach((step, index) => {
@@ -55,12 +41,13 @@ export default class extends Controller {
       .then((response) => response.text())
       .then((data) => {
         this.gptTimeResultTarget.innerHTML = data;
-        console.log(typeof data, data,  this.gptTimeResultTarget)
+        console.log(typeof data, data, this.gptTimeResultTarget)
       })
       .catch((error) => {
-        console.error(error)})
+        console.error(error)
+      })
       .finally(() => {
-        $("#loader").hide(); // Hide loader after the request completes (success or failure)
+        $("#loader").hide();
       });
   }
 }

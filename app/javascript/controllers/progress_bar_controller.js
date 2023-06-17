@@ -18,7 +18,6 @@ export default class extends Controller {
       const progressEl = document.getElementById("progress")
       const elapsedTime = Date.now() - startTime;
       let progress = (elapsedTime / 600000) * 100
-      // console.log(progress, startTime, elapsedTime);
       progressEl.style.width = `${progress}%`;
     }, 1000);
 
