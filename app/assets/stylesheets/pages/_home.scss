@@ -23,7 +23,9 @@ video {
 
 .container-landing {
   height: 83vh;
-  margin: auto;
+  min-height: 500px;
+  margin-right: auto;
+  margin-left: auto;
   text-align: center;
   align-items: center;
   animation: fadein 2.5s ease-out forwards;
@@ -61,6 +63,7 @@ video {
   position: relative;
   box-shadow: none;
   transition: box-shadow 0.3s, transform 0.3s;
+  margin-bottom: 100px;
 }
 
 .homebtn:hover {
@@ -133,3 +136,163 @@ video {
     transform: translateX(0);
   }
 }
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .navy-bar-top {
+    top: 0;
+    width: 0;
+    height: 0;
+    background-color: none;
+    animation: SlideIn none;
+  }
+
+  .navy-bar-bottom {
+    width: 0;
+    height: 0;
+    background-color: none;
+    position: static;
+    bottom: 0;
+    animation: SlideInL none;
+  }
+
+  .title {
+    .title-logo {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .video {
+    width: 0;
+    height: 0;
+  }
+
+  video {
+    width: 0;
+    height: 0;
+  }
+
+  .container-landing {
+    height: 60vh;
+    border: 10px solid $sub-headers-color;
+    height: auto;
+
+    h1 {
+      font-size: 36px;
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+  }
+
+  .homebtn {
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 80;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 18px;
+    padding-left: 18px;
+    border-radius: 8px;
+    background-color: $sub-headers-color;
+    display: inline-block;
+    position: relative;
+    box-shadow: none;
+    transition: box-shadow 0.3s, transform 0.3s;
+    margin-bottom: 50px;
+  }
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  // .navy-bar-top {
+  //   top: 0;
+  //   width: 0;
+  //   height: 0;
+  //   background-color: none;
+  //   animation: SlideIn none;
+  // }
+
+  // .navy-bar-bottom {
+  //   width: 0;
+  //   height: 0;
+  //   background-color: none;
+  //   position: static;
+  //   bottom: 0;
+  //   animation: SlideInL none;
+  // }
+
+  // .title {
+  //   .title-logo {
+  //     width: 60px;
+  //     height: 60px;
+  //   }
+  // }
+
+  // .video {
+  //   width: 0;
+  //   height: 0;
+  // }
+
+  // video {
+  //   width: 0;
+  //   height: 0;
+  // }
+
+  .space {
+    height: 100px;
+  }
+
+  .container-landing {
+    height: 70vh;
+
+    //   border: 10px solid $sub-headers-color;
+    //   height: auto;
+
+    //   h1 {
+    //     font-size: 42px;
+    //   }
+
+    //   h2 {
+    //     font-size: 36px;
+    //   }
+
+  }
+
+  // .homebtn {
+  //   margin-left: auto;
+  //   margin-right: auto;
+  //   text-decoration: none;
+  //   color: white;
+  //   font-size: 20px;
+  //   font-weight: 80;
+  //   padding-top: 10px;
+  //   padding-bottom: 10px;
+  //   padding-right: 18px;
+  //   padding-left: 18px;
+  //   border-radius: 8px;
+  //   background-color: $sub-headers-color;
+  //   display: inline-block;
+  //   position: relative;
+  //   box-shadow: none;
+  //   transition: box-shadow 0.3s, transform 0.3s;
+  //   margin-bottom: 50px;
+  // }
+}
+
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
